@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">DelaySMS</string>
+    <string name="large_text">
+        "file is in res_strings.xml. If you want to modify anything, then it is there.\n \n"
+
+
+        "Question is,\n"
+        "how do i change it into files?"
+    </string>
+    <string name="action_settings">Settings</string>
+</resources>

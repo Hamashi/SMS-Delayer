@@ -1,0 +1,23 @@
+<resources>
+    <string name="large_text_fr">
+        "Bonjour Je suis la partie texte en francais. Je dit la meme chose, mais \n
+        EN \n
+         FRANCAIS.
+        \n\n pas ouf ein mais bon j'apprend."
+
+
+        "Question is,\n"
+        "how do i change it into files?"
+    </string>
+    <string name="action_settings_fr">Options</string>
+    <string name="title_activity_main_fr">MainActivity</string>
+    <string name="section_format_fr">Hello World de la section: %1$d</string>
+    <string name="Sent_fr">Envoyée</string>
+    <string name="Scheduled_fr">Planifié</string>
+
+    <!-- Strings Related to WriteNew Activity -->
+    <string name="edit_message_fr">Ecrivez un message</string>
+    <string name="button_send_fr">Envoyez</string>
+    <string name="title_activity_write_new_fr">Nouveau Message..</string>
+    <string name="title_activity_phone_number_fr">Numéro de téléphone..</string>
+</resources>
