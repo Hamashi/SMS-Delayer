@@ -12,6 +12,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+<!-- HOME ACTIVITY -->
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -21,6 +23,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+<!-- WRITE NEW MESSAGE -->
         <activity
             android:name=".WriteNew"
             android:label="@string/title_activity_write_new"
@@ -30,6 +34,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="gen.smsdelay.MainActivity" />
         </activity>
+
+<!-- SETTINGS PAGE -->
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
