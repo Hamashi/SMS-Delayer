@@ -1,5 +1,6 @@
 package gen.smsdelay;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -7,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.telephony.SmsManager;
 import android.view.View;
+import android.widget.Button;
 
 public class WriteNew extends AppCompatActivity {
 
@@ -25,4 +27,12 @@ public class WriteNew extends AppCompatActivity {
 
         return true;
     }
+
+    //Button that links to Page 2: WriteNew
+    Button sendButton = (Button) findViewById(R.id.sendButton);
+    sendButton.setOnClickListener(new View.OnClickListener()
+            Intent smsIntent = new Intent(Intent.ACTION_VIEW);
+            startActivity(smsIntent);
+
+    });
 }
