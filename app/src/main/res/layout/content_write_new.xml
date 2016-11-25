@@ -34,10 +34,12 @@
             />
 
         <TimePicker
-            android:id="@+id/timePicker3"
+            android:id="@+id/simpleTimePicker"
+            android:timePickerMode="spinner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
          />
+
 
 
     </LinearLayout>
