@@ -1,10 +1,9 @@
 package gen.smsdelay;
 
-import android.icu.util.Calendar;
+import android.app.AlarmManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.telephony.SmsManager;
@@ -12,15 +11,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-
+import android.widget.TimePicker;
+import android.util.Log;
 import java.util.Date;
 
 public class WriteNew extends AppCompatActivity {
-    Button sendButton;
-    EditText phoneText;
-    EditText messageTest;
-    String phoneString;
-    String messageString;
+
+    private Button sendButton;
+    private EditText phoneText;
+    private EditText messageTest;
+    private String phoneString;
+    private String messageString;
+    private DatePicker date;
+    private TimePicker time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,22 +35,40 @@ public class WriteNew extends AppCompatActivity {
         sendButton = (Button) findViewById(R.id.sendButton);
         phoneText = (EditText) findViewById(R.id.phoneText);
         messageTest = (EditText) findViewById(R.id.messageText);
+        date = (DatePicker) findViewById(R.id.datePicker);
+        time = (TimePicker) findViewById(R.id.simpleTimePicker);
+
         phoneString= phoneText.getText().toString();
         messageString = messageTest.getText().toString();
 
         sendButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                sendSMS(phoneString, messageString);
+
+                schedule(phoneString, messageString, date, time);
             }
         });
 
     }
 
 
-    public void schedule(String number, String message, DatePicker datePicker)
+    public void schedule(String number, String message, DatePicker datePicker, TimePicker time)
     {
-        Date calendar;
-        calendar = getDateFromDatePicker(datePicker);
+        // Retrieving date
+        int day = datePicker.getDayOfMonth();
+        int month = datePicker.getMonth();
+        int year =  datePicker.getYear();
+
+        //Retrieving hour
+        int hour = time.getHour();
+        int minute = time.getMinute();
+
+        Date date = new Date(year, month, day, hour, minute);
+        long timestamp = date.getTime();
+
+        Intent send = new Intent(MainActivity.this, WriteNew.class);
+        send.putExtra( "key1", this.);
+        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, timestamp, );
     }
 
     public boolean sendSMS(String number, String message)
@@ -58,15 +79,4 @@ public class WriteNew extends AppCompatActivity {
         return true;
     }
 
-    public static java.util.Date getDateFromDatePicker(DatePicker datePicker)
-    {
-        int day = datePicker.getDayOfMonth();
-        int month = datePicker.getMonth();
-        int year =  datePicker.getYear();
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month, day);
-
-        return calendar.getTime();
-    }
 }

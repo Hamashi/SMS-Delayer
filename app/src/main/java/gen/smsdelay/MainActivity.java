@@ -24,7 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
-
+// TODO : Cancel button
 public class MainActivity extends AppCompatActivity {
 
     /**
