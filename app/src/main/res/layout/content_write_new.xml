@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="wrap_content"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:weightSum="1">
 
@@ -21,32 +21,34 @@
         android:hint="@string/title_activity_write_new"
         />
 
-    <LinearLayout
-        android:orientation="horizontal"
+
+    <DatePicker
+        android:id="@+id/datePicker"
+        android:datePickerMode = "spinner"
+        android:scaleY="0.9"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:weightSum="1">
+        android:calendarViewShown="false"
+        android:layout_height="match_parent"
+        android:layout_marginTop="-20dp"/>
 
-        <DatePicker
-            android:id="@+id/datePicker3"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            />
-
-        <TimePicker
+    <TimePicker
             android:id="@+id/simpleTimePicker"
             android:timePickerMode="spinner"
+            android:scaleY="0.9"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="-20dp"
          />
 
-
-
-    </LinearLayout>
-
-    <Button
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/button_send"
-     />
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_send"
+            android:layout_alignParentBottom="true"
+            />
+    </RelativeLayout>
 </LinearLayout>
