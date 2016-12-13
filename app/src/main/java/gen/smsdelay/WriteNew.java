@@ -1,8 +1,8 @@
 package gen.smsdelay;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.icu.util.Calendar;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -12,20 +12,24 @@ import android.support.v7.widget.Toolbar;
 import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.TimePicker;
 import android.util.Log;
-import android.widget.Toast;
 import java.util.Date;
 
+import static android.app.PendingIntent.getService;
+
 public class WriteNew extends AppCompatActivity {
+
+    private DatePicker date;
+    private TimePicker time;
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0;
     Button sendButton;
     EditText phoneText;
     EditText messageTest;
     String phoneString;
     String messageString;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +51,47 @@ public class WriteNew extends AppCompatActivity {
 
     protected void sendSMS() {
         phoneString = phoneText.getText().toString();
+        date = (DatePicker) findViewById(R.id.datePicker);
+        time = (TimePicker) findViewById(R.id.simpleTimePicker);
+
+        phoneString= phoneText.getText().toString();
         messageString = messageTest.getText().toString();
+
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                schedule(phoneString, messageString, date, time);
+            }
+        });
+
+    }
+
+
+    public void schedule(String number, String message, DatePicker datePicker, TimePicker time)
+    {
+        // Retrieving date
+        int day = datePicker.getDayOfMonth();
+        int month = datePicker.getMonth();
+        int year =  datePicker.getYear();
+
+        //Retrieving hour
+        int hour = time.getHour();
+        int minute = time.getMinute();
+
+        Date date = new Date(year, month, day, hour, minute);
+        long timestamp = date.getTime();
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        //alarmManager.set(AlarmManager.RTC_WAKEUP, timestamp, getService(this, 0, , PendingIntent.FLAG_ONE_SHOT));
+    }
+
+    public boolean sendSMS(String number, String message)
+    {
+        SmsManager smsManager = SmsManager.getDefault();
+        smsManager.sendTextMessage(number, null, message, null, null);
+
+        return true;
+    }
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.SEND_SMS)) {
