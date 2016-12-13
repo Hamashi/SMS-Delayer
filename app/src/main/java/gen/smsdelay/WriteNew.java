@@ -1,6 +1,7 @@
 package gen.smsdelay;
 
 import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,8 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.util.Log;
 import java.util.Date;
+
+import static android.app.PendingIntent.getService;
 
 public class WriteNew extends AppCompatActivity {
 
@@ -65,10 +68,8 @@ public class WriteNew extends AppCompatActivity {
         Date date = new Date(year, month, day, hour, minute);
         long timestamp = date.getTime();
 
-        Intent send = new Intent(MainActivity.this, WriteNew.class);
-        send.putExtra( "key1", this.);
-        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, timestamp, );
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        //alarmManager.set(AlarmManager.RTC_WAKEUP, timestamp, getService(this, 0, , PendingIntent.FLAG_ONE_SHOT));
     }
 
     public boolean sendSMS(String number, String message)
