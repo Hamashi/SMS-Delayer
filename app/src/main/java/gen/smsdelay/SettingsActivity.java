@@ -86,6 +86,9 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         }
     };
 
+    Intent fbLink = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.fr/smsdelayer"));
+
+
     /**
      * Helper method to determine if the device has an extra-large screen. For
      * example, 10" tablets are extra-large.
