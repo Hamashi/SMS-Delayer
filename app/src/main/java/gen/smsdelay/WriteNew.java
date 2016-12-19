@@ -43,7 +43,6 @@ public class WriteNew extends AppCompatActivity {
 
     private DatePicker date;
     private TimePicker time;
-    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0;
     Button sendButton;
     EditText phoneText;
     EditText messageTest;
