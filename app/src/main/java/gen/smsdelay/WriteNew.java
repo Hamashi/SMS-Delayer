@@ -58,11 +58,12 @@ public class WriteNew extends AppCompatActivity {
         sendButton = (Button) findViewById(R.id.sendButton);
         phoneText = (EditText) findViewById(R.id.phoneText);
         messageTest = (EditText) findViewById(R.id.messageText);
+        date = (DatePicker) findViewById(R.id.datePicker);
+        time = (TimePicker) findViewById(R.id.simpleTimePicker);
 
         sendButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                SmsManager manager = SmsManager.getDefault();
-                manager.sendTextMessage(phoneText.getText().toString(), null, messageTest.getText().toString(), null, null);
+                schedule(phoneText.getText().toString(), messageTest.getText().toString(), date,  time);
             }
         });
     }
