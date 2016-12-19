@@ -81,8 +81,12 @@ public class WriteNew extends AppCompatActivity {
         Date date = new Date(year, month, day, hour, minute);
         long timestamp = date.getTime();
 
+        Intent senderIntent = new Intent(this, SendSMS.class);
+        senderIntent.putExtra(SendSMS.NUMBER, number);
+        senderIntent.putExtra(SendSMS.MESSAGE, message);
+
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        //alarmManager.set(AlarmManager.RTC_WAKEUP, timestamp, getService(this, 0, , PendingIntent.FLAG_ONE_SHOT));
+        alarmManager.set(AlarmManager.RTC_WAKEUP, timestamp, getService(this, 0, senderIntent, PendingIntent.FLAG_ONE_SHOT));
     }
 }
 
